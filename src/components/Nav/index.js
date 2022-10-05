@@ -3,15 +3,15 @@ import { capitalizeFirstLetter  } from "../../utils/helpers";
 
 function Nav(props) {
 
-    useEffect(() => {
-        document.title = capitalizeFirstLetter(currentCategory.name);
-    }, [currentCategory]);
-    
     const {
         categories =[],
         setCurrentCategory,
         currentCategory,
     } = props;
+
+    useEffect(() => {
+        document.title = capitalizeFirstLetter(currentCategory.name);
+    }, [currentCategory]);
 
     return(
         <header className="flex-row px-1">
