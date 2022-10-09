@@ -5,14 +5,13 @@ function ContactForm() {
 
     
     const [formState, setFormState] = useState({ name: '', email: '', message: '' });
-    const { name, email, message } = formState;
     const [errorMessage, setErrorMessage] = useState('');
+    const { name, email, message } = formState;
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!errorMessage) {
-            setFormState({ [e.target.name]: e.target.value });
-            console.log('Form', formState);
+            console.log('Submit Form', formState);
         }
     };
 
@@ -31,11 +30,11 @@ function ContactForm() {
                 setErrorMessage('');
                 }
             }
+            if (!errorMessage) {
+                setFormState({ ...formState, [e.target.name]: e.target.value });
+                console.log('Handle Form', formState);
+            }
         };
-    // function handleSubmit(e) {
-    //     e.preventDefault();
-    //     console.log(formState);
-    // }
 
     return (
         <section>
@@ -61,7 +60,7 @@ function ContactForm() {
                 <button type="submit" data-testid="button">Submit</button>
             </form>
         </section>
-    )
+    );
 };
 
 export default ContactForm;
